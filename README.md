@@ -2,7 +2,7 @@
 
 **Objetivo Geral:** Desenvolver um pequeno projeto com uma interface em terminal (CLI) que simula um sistema de gerenciamento bancário. O programa deverá permitir que o usuário interaja por terminal para realizar as operações descritas abaixo. Os dados das contas deverão ser armazenados em um arquivo CSV, que será alterado pelo programa sempre que novas alterações aos dados bancários sejam feitas ou caso seja necessário buscar informações sobre as contas.
 
-**Prazo:** 31/08
+**Prazo:** 01/09
 
 **Forma de entrega:** Repositório no GitHub Classroom.
 
