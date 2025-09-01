@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>operacoes module &#8212; Documentação Documentacao LP 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=71a39b36"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-operacoes">
+<span id="operacoes-module"></span><h1>operacoes module<a class="headerlink" href="#module-operacoes" title="Link para este cabeçalho">¶</a></h1>
+<p>Modulo de funções para operações bancárias</p>
+<dl class="simple">
+<dt>Raises:</dt><dd><p>AccountError: Erro levantado quando o usuário se refere a uma conta que não existe</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="operacoes.AccountError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">AccountError</span></span><a class="headerlink" href="#operacoes.AccountError" title="Link para esta definição">¶</a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Erros relacionados a(s conta(s) utilizada(s)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.consultar_saldo">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">consultar_saldo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#operacoes.consultar_saldo" title="Link para esta definição">¶</a></dt>
+<dd><p>Dado um número válido de uma conta, indica o saldo da mesma</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente</p>
+</dd>
+<dt>Returns:</dt><dd><p>float | None: caso a conta exista retorna o valor do saldo. Caso contrário retorna None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.criar_conta">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">criar_conta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nome_cliente</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes.criar_conta" title="Link para esta definição">¶</a></dt>
+<dd><p>Cria uma nova conta. Se a conta já existe retorna um erro</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente
+nome_cliente (str): nome do cliente dono da conta</p>
+</dd>
+<dt>Raises:</dt><dd><p>AccountError: Erro consequente da tentativa de criar uma conta já existente</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[int, dict]: Explicita a informação que foi adicionada ao CSV</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.depositar">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">depositar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes.depositar" title="Link para esta definição">¶</a></dt>
+<dd><p>Verifica se a conta exisste e se o valor de depósito é positivo,
+em caso afirmativo para ambos soma o valor no saldo da conta</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente
+valor (float): valor desejado para a operação. Deve ser sempre positivo</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: retorna um valor booleano quanto ao sucesso ou fracasso da operação</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.identificar_cliente_mais_rico">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">identificar_cliente_mais_rico</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#operacoes.identificar_cliente_mais_rico" title="Link para esta definição">¶</a></dt>
+<dd><p>Procura o cliente com maior saldo e retorna o nome e saldo desse cliente</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict | None: Caso o cliente exista retorna o dicionário com as informações do mesmo. Caso contrário retorna nada</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">identificar_cliente_mais_rico</span><span class="p">()</span>
+<span class="go">[{&#39;cliente&#39;: &#39;bob&#39;, &#39;saldo&#39;: 1000.0}, {&#39;cliente&#39;: &#39;roberto&#39;, &#39;saldo&#39;: 1000.0}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.realizar_transferencia">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">realizar_transferencia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conta_origem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conta_destino</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes.realizar_transferencia" title="Link para esta definição">¶</a></dt>
+<dd><p>Move dinheiro de uma conta para outra desde que ambas existam e que a conta que perderá o
+dinheiro possua saldo suficiente</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>conta_origem (str): conta da qual o dinheiro sairá
+conta_destino (str): conta na qual o dinheiro chegará
+valor (float): valor da transferência</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: retorna se houve sucesso ou falha e uma mensagem de explicação</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.sacar">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">sacar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes.sacar" title="Link para esta definição">¶</a></dt>
+<dd><p>Remove valor do saldo da conta especificada desde que a conta existe e o valor seja positivo</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente
+valor (float): valor desejado para a operação. Deve ser sempre positivo</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: Uma tupla descrevendo o sucesso ou falha da operação</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.somar_saldos_em_lote">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">somar_saldos_em_lote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#operacoes.somar_saldos_em_lote" title="Link para esta definição">¶</a></dt>
+<dd><p>deposita valores em diversas contas. Se uma conta não existir ou um valor ser inválido ignora e continua</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: quantidade de operações que foram realizadas com sucesso</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.somar_saldos_gerais">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">somar_saldos_gerais</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#operacoes.somar_saldos_gerais" title="Link para esta definição">¶</a></dt>
+<dd><p>Retorna a soma de todos os saldos das contas no banco</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: Valor da soma de todos os saldos</p>
+</dd>
+</dl>
+<p>Examples:
+&gt;&gt;&gt; somar_saldos_gerais()
+2000.0</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes.subtrair_saldos_em_lote">
+<span class="sig-prename descclassname"><span class="pre">operacoes.</span></span><span class="sig-name descname"><span class="pre">subtrair_saldos_em_lote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#operacoes.subtrair_saldos_em_lote" title="Link para esta definição">¶</a></dt>
+<dd><p>Realiza vários saques de contas simultâneamente, caso o valor seja inválido, o saldo seja insuficiente
+ou a conta não exista log o erro e continua</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: número de operações que obtiveram sucesso</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Documentacao LP</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegação</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, João Pedro Yoshida, Nicolas Aniceto.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/apidoc/operacoes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

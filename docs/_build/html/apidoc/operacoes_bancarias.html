@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>operacoes_bancarias module &#8212; Documentação Documentacao LP 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=71a39b36"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-operacoes_bancarias">
+<span id="operacoes-bancarias-module"></span><h1>operacoes_bancarias module<a class="headerlink" href="#module-operacoes_bancarias" title="Link para este cabeçalho">¶</a></h1>
+<p>Modulo de funções para operações bancárias</p>
+<dl class="simple">
+<dt>Raises:</dt><dd><p>AccountError: Erro levantado quando o usuário se refere a uma conta que não existe</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="operacoes_bancarias.AccountError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">AccountError</span></span><a class="headerlink" href="#operacoes_bancarias.AccountError" title="Link para esta definição">¶</a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Erros relacionados a(s conta(s) utilizada(s)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.consultar_saldo">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">consultar_saldo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#operacoes_bancarias.consultar_saldo" title="Link para esta definição">¶</a></dt>
+<dd><p>Função destinada a consultar saldo de uma conta</p>
+<dl>
+<dt>Args:</dt><dd><p>numero_conta (str): Número da conta com saldo a ser consultado</p>
+</dd>
+<dt>Returns:</dt><dd><p>float | None: Retorna o saldo(float) caso a conta exista, e retorna None caso
+a conta seja inexisnte</p>
+</dd>
+<dt>Examples:</dt><dd><p># Preparando o arquivo ‘contas.csv’ para realização dos testes
+&gt;&gt;&gt; salvar_contas_para_csv(“contas.csv”, {})
+&gt;&gt;&gt; # Criar conta e adicionar saldo
+&gt;&gt;&gt; criar_conta(“0001”, “Joao”)
+(‘0001’, {‘cliente’: ‘Joao’, ‘saldo’: 0.0})
+&gt;&gt;&gt; depositar(“0001”, 200.0)
+(True, ‘Deposito realizado com sucesso!’)
+&gt;&gt;&gt; consultar_saldo(“0001”)
+200.0</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">consultar_saldo</span><span class="p">(</span><span class="s2">&quot;9999&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.criar_conta">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">criar_conta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nome_cliente</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes_bancarias.criar_conta" title="Link para esta definição">¶</a></dt>
+<dd><p>Cria uma nova conta. Se a conta já existe retorna um erro</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente
+nome_cliente (str): nome do cliente dono da conta</p>
+</dd>
+<dt>Raises:</dt><dd><p>AccountError: Erro consequente da tentativa de criar uma conta já existente</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[int, dict]: Explicita a informação que foi adicionada ao CSV</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.depositar">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">depositar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes_bancarias.depositar" title="Link para esta definição">¶</a></dt>
+<dd><blockquote>
+<div><p>Função destinada ao cliente realizar um depósito em sua conta</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): Número da conta a ser depositado o saldo
+valor (float): Valor a ser depositado na conta</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: Retorna uma tupla, composta por dois elementos: um valor 
+booleano e uma string indicando sucesso ou falha no depósito</p>
+</dd>
+</dl>
+<p>Examples:
+#Preparando o arquivo ‘contas.csv’ para realização dos testes</p>
+<blockquote>
+<div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">salvar_contas_para_csv</span><span class="p">(</span><span class="s2">&quot;contas.csv&quot;</span><span class="p">,</span> <span class="p">{})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Criar conta para os testes</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">criar_conta</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;Joao&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(‘0001’, {‘cliente’: ‘Joao’, ‘saldo’: 0.0})</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">depositar</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># conta existente</span>
+</pre></div>
+</div>
+<p>(True, ‘Deposito realizado com sucesso!’)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">consultar_saldo</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>50.0</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">depositar</span><span class="p">(</span><span class="s2">&quot;9999&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># conta inexistente</span>
+</pre></div>
+</div>
+<p>(False, ‘Erro: conta inexistente!’)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">depositar</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># valor negativo</span>
+</pre></div>
+</div>
+<p>(False, ‘Erro: Tentativa de adicionar um saldo negativo’)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.identificar_cliente_mais_rico">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">identificar_cliente_mais_rico</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#operacoes_bancarias.identificar_cliente_mais_rico" title="Link para esta definição">¶</a></dt>
+<dd><p>Procura o cliente com maior saldo e retorna o nome e saldo desse cliente</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict | None: Caso o cliente exista retorna o dicionário com as informações do mesmo. Caso contrário retorna nada</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.realizar_transferencia">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">realizar_transferencia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conta_origem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conta_destino</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes_bancarias.realizar_transferencia" title="Link para esta definição">¶</a></dt>
+<dd><blockquote>
+<div><p>Função que realiza uma transferência entre duas contas.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>conta_origem (str): Número da conta cujo saldo será retirado
+conta_destino (str): Número da conta cujo saldo será depositado
+valor (float): Valor a ser transferido entre as duas contas</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: Tupla composta por dois elementos:
+bool - um valor booleano indicando sucesso(True) ou falha(False) no transferencia
+str - Um texto(str) indicando sucesso ou falha na transferencia</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Examples:
+#Preparando o arquivo ‘contas.csv’ para realização dos testes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">salvar_contas_para_csv</span><span class="p">(</span><span class="s2">&quot;contas.csv&quot;</span><span class="p">,</span> <span class="p">{})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">criar_conta</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;Joao&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">criar_conta</span><span class="p">(</span><span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="s2">&quot;Maria&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">depositar</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="go">(True, &#39;Deposito realizado com sucesso!&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">realizar_transferencia</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">)</span>
+<span class="go">(True, &#39;Transferência realizada com sucesso!&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consultar_saldo</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
+<span class="go">50.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consultar_saldo</span><span class="p">(</span><span class="s2">&quot;0002&quot;</span><span class="p">)</span>
+<span class="go">50.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">realizar_transferencia</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;9999&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="go">(False, &#39;Erro: Conta destino inexistente!&#39;)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">realizar_transferencia</span><span class="p">(</span><span class="s2">&quot;9999&quot;</span><span class="p">,</span> <span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="go">(False, &#39;Erro: Conta origem inexistente!&#39;)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">realizar_transferencia</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="go">(False, &#39;Erro: Tentativa de transferir saldo negativo&#39;)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">realizar_transferencia</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">)</span>
+<span class="go">(False, &#39;Erro: Saldo insuficiente&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.sacar">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">sacar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_conta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#operacoes_bancarias.sacar" title="Link para esta definição">¶</a></dt>
+<dd><p>Remove valor do saldo da conta especificada desde que a conta existe e o valor seja positivo</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>numero_conta (str): valor numérico representativo da conta. Deve ser único para cada cliente
+valor (float): valor desejado para a operação. Deve ser sempre positivo</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple[bool, str]: Uma tupla descrevendo o sucesso ou falha da operação</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.somar_saldos_em_lote">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">somar_saldos_em_lote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#operacoes_bancarias.somar_saldos_em_lote" title="Link para esta definição">¶</a></dt>
+<dd><p>deposita valores em diversas contas. Se uma conta não existir ou um valor ser inválido ignora e continua</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: quantidade de operações que foram realizadas com sucesso</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.somar_saldos_gerais">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">somar_saldos_gerais</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#operacoes_bancarias.somar_saldos_gerais" title="Link para esta definição">¶</a></dt>
+<dd><p>Retorna a soma de todos os saldos das contas no banco</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: Valor da soma de todos os saldos</p>
+</dd>
+</dl>
+<p>Examples:
+&gt;&gt;&gt; somar_saldos_gerais()
+100.0</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="operacoes_bancarias.subtrair_saldos_em_lote">
+<span class="sig-prename descclassname"><span class="pre">operacoes_bancarias.</span></span><span class="sig-name descname"><span class="pre">subtrair_saldos_em_lote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#operacoes_bancarias.subtrair_saldos_em_lote" title="Link para esta definição">¶</a></dt>
+<dd><p>Realiza vários saques de contas simultâneamente, caso o valor seja inválido, o saldo seja insuficiente
+ou a conta não exista log o erro e continua</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: número de operações que obtiveram sucesso</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Documentacao LP</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegação</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, João Pedro Yoshida, Nicolas Aniceto.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/apidoc/operacoes_bancarias.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
