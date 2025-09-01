@@ -1,0 +1,7 @@
+bancodedados module
+===================
+
+.. automodule:: bancodedados
+   :members:
+   :show-inheritance:
+   :undoc-members:

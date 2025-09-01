@@ -1,0 +1,7 @@
+operacoes module
+================
+
+.. automodule:: operacoes
+   :members:
+   :show-inheritance:
+   :undoc-members:
